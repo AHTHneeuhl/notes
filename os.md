@@ -402,19 +402,17 @@ Process scheduling algorithms determine how the CPU is allocated to processes. C
 ### 31. **Calculating Bits for Page Table Entries in Two-Level Paging**
 
 Given:
-- **Total RAM**: 4 GB = \( 2^{32} \) bytes
-- **Page size**: 4 KB = \( 2^{12} \) bytes
+- **Total RAM**: 4 GB = $ 2^{32} $ bytes
+- **Page size**: 4 KB = $ 2^{12} $ bytes
 - **Two-level paging**: The virtual address is divided into three parts: Page Directory Index, Page Table Index, and Offset.
 
 #### Steps:
 1. **Calculate the number of pages**:
-   \[
-   \text{Number of pages} = \frac{\text{Total RAM}}{\text{Page size}} = \frac{2^{32}}{2^{12}} = 2^{20} \text{ pages}
-   \]
+    $\text{Number of pages} = \frac{\text{Total RAM}}{\text{Page size}} = \frac{2^{32}}{2^{12}} = 2^{20} \text{ pages}$
 
 2. **Determine the bits for the offset**:
    - The offset is determined by the page size.
-   - \( 2^{12} \) bytes per page ⇒ **12 bits** for the offset.
+   - $ 2^{12} $ bytes per page ⇒ **12 bits** for the offset.
 
 3. **Divide the remaining bits for the two-level paging**:
    - Total virtual address bits = 32 (since RAM is 4 GB).
@@ -461,20 +459,20 @@ Given:
 
 5. **Calculate seek distances**:
    - Forward direction:
-     - 53 → 65: \( |65 - 53| = 12 \)
-     - 65 → 67: \( |67 - 65| = 2 \)
-     - 67 → 98: \( |98 - 67| = 31 \)
-     - 98 → 122: \( |122 - 98| = 24 \)
-     - 122 → 124: \( |124 - 122| = 2 \)
-     - 124 → 183: \( |183 - 124| = 59 \)
+     - 53 → 65: $ |65 - 53| = 12 $
+     - 65 → 67: $ |67 - 65| = 2 $
+     - 67 → 98: $ |98 - 67| = 31 $
+     - 98 → 122: $ |122 - 98| = 24 $
+     - 122 → 124: $ |124 - 122| = 2 $
+     - 124 → 183: $ |183 - 124| = 59 $
    - Reverse direction:
-     - 183 → 124: \( |183 - 124| = 59 \) (already serviced)
-     - 124 → 122: \( |124 - 122| = 2 \) (already serviced)
-     - 122 → 98: \( |122 - 98| = 24 \) (already serviced)
-     - 98 → 67: \( |98 - 67| = 31 \) (already serviced)
-     - 67 → 65: \( |67 - 65| = 2 \) (already serviced)
-     - 65 → 37: \( |65 - 37| = 28 \)
-     - 37 → 14: \( |37 - 14| = 23 \)
+     - 183 → 124: $ |183 - 124| = 59 $ (already serviced)
+     - 124 → 122: $ |124 - 122| = 2 $ (already serviced)
+     - 122 → 98: $ |122 - 98| = 24 $ (already serviced)
+     - 98 → 67: $ |98 - 67| = 31 $ (already serviced)
+     - 67 → 65: $ |67 - 65| = 2 $ (already serviced)
+     - 65 → 37: $ |65 - 37| = 28 $
+     - 37 → 14: $ |37 - 14| = 23 $
 
 6. **Total seek time**:
    - Sum of seek distances:
@@ -499,10 +497,8 @@ Given:
 
 #### Steps:
 1. **Compute the Need Matrix (N)**:
-   \[
-   N[i][j] = M[i][j] - A[i][j]
-   \]
-   Where \( N[i][j] \) is the need of process \( i \) for resource \( j \).
+   $N[i][j] = M[i][j] - A[i][j]$
+   Where $N[i][j] $ is the need of process $i$ for resource $j$.
 
 2. **Initialize Work and Finish vectors**:
    - Work = Available (V)
@@ -562,26 +558,22 @@ Suppose:
 ### 34. **Effective Access Time in a Paging System with TLB**
 
 Given:
-- **TLB Hit Ratio (H)**: Probability that the page table entry is found in the TLB.
-- **TLB Miss Ratio (1 - H)**: Probability that the page table entry is not found in the TLB.
-- **TLB Access Time (T_tlb)**: Time to access the TLB.
-- **Main Memory Access Time (T_mem)**: Time to access main memory.
+- **TLB Hit Ratio ($ H $)**: Probability that the page table entry is found in the TLB.
+- **TLB Miss Ratio ($ 1 - H $)**: Probability that the page table entry is not found in the TLB.
+- **TLB Access Time ($ T_{\text{tlb}} $)**: Time to access the TLB.
+- **Main Memory Access Time ($ T_{\text{mem}} $)**: Time to access main memory.
 
 #### Formula:
-\[
-\text{Effective Access Time (EAT)} = H \times (T_{\text{tlb}} + T_{\text{mem}}) + (1 - H) \times (T_{\text{tlb}} + 2 \times T_{\text{mem}})
-\]
+$\text{Effective Access Time (EAT)} = H \times (T_{\text{tlb}} + T_{\text{mem}}) + (1 - H) \times (T_{\text{tlb}} + 2 \times T_{\text{mem}})$
 
 #### Explanation:
 - **TLB Hit**: Access TLB and then access main memory once.
 - **TLB Miss**: Access TLB, then access the page table in main memory, and finally access the desired memory location.
 
 #### Example:
-- \( H = 0.9 \), \( T_{\text{tlb}} = 10 \) ns, \( T_{\text{mem}} = 100 \) ns.
+- $ H = 0.9 $, $ T_{\text{tlb}} = 10 \, \text{ns} $, $ T_{\text{mem}} = 100 \, \text{ns} $.
 - EAT:
-  \[
-  EAT = 0.9 \times (10 + 100) + 0.1 \times (10 + 2 \times 100) = 0.9 \times 110 + 0.1 \times 210 = 99 + 21 = 120 \text{ ns}
-  \]
+  $\text{EAT} = 0.9 \times (10 + 100) + 0.1 \times (10 + 2 \times 100) = 0.9 \times 110 + 0.1 \times 210 = 99 + 21 = 120 \, \text{ns}$
 
 ---
 
