@@ -459,26 +459,24 @@ Given:
 
 5. **Calculate seek distances**:
    - Forward direction:
-     - 53 → 65: $ |65 - 53| = 12 $
-     - 65 → 67: $ |67 - 65| = 2 $
-     - 67 → 98: $ |98 - 67| = 31 $
-     - 98 → 122: $ |122 - 98| = 24 $
-     - 122 → 124: $ |124 - 122| = 2 $
-     - 124 → 183: $ |183 - 124| = 59 $
+     - 53 → 65: $|65 - 53| = 12$
+     - 65 → 67: $|67 - 65| = 2$
+     - 67 → 98: $|98 - 67| = 31$
+     - 98 → 122: $|122 - 98| = 24$
+     - 122 → 124: $|124 - 122| = 2$
+     - 124 → 183: $|183 - 124| = 59$
    - Reverse direction:
-     - 183 → 124: $ |183 - 124| = 59 $ (already serviced)
-     - 124 → 122: $ |124 - 122| = 2 $ (already serviced)
-     - 122 → 98: $ |122 - 98| = 24 $ (already serviced)
-     - 98 → 67: $ |98 - 67| = 31 $ (already serviced)
-     - 67 → 65: $ |67 - 65| = 2 $ (already serviced)
-     - 65 → 37: $ |65 - 37| = 28 $
-     - 37 → 14: $ |37 - 14| = 23 $
+     - 183 → 124: $|183 - 124| = 59$ (already serviced)
+     - 124 → 122: $|124 - 122| = 2$ (already serviced)
+     - 122 → 98: $|122 - 98| = 24$ (already serviced)
+     - 98 → 67: $|98 - 67| = 31$ (already serviced)
+     - 67 → 65: $|67 - 65| = 2$ (already serviced)
+     - 65 → 37: $|65 - 37| = 28$
+     - 37 → 14: $|37 - 14| = 23$
 
 6. **Total seek time**:
    - Sum of seek distances:
-     \[
-     12 + 2 + 31 + 24 + 2 + 59 + 28 + 23 = 181
-     \]
+     $12 + 2 + 31 + 24 + 2 + 59 + 28 + 23 = 181$
 
 #### Final Answer:
 - **Total seek time**: **181 cylinders**.
@@ -498,7 +496,7 @@ Given:
 #### Steps:
 1. **Compute the Need Matrix (N)**:
    $N[i][j] = M[i][j] - A[i][j]$
-   Where $N[i][j] $ is the need of process $i$ for resource $j$.
+   Where $N[i][j]$ is the need of process $i$ for resource $j$.
 
 2. **Initialize Work and Finish vectors**:
    - Work = Available (V)
@@ -571,7 +569,7 @@ $\text{Effective Access Time (EAT)} = H \times (T_{\text{tlb}} + T_{\text{mem}})
 - **TLB Miss**: Access TLB, then access the page table in main memory, and finally access the desired memory location.
 
 #### Example:
-- $ H = 0.9 $, $ T_{\text{tlb}} = 10 \, \text{ns} $, $ T_{\text{mem}} = 100 \, \text{ns} $.
+- $H = 0.9$, $T_{\text{tlb}} = 10 \, \text{ns}$, $T_{\text{mem}} = 100 \, \text{ns}$.
 - EAT:
   $\text{EAT} = 0.9 \times (10 + 100) + 0.1 \times (10 + 2 \times 100) = 0.9 \times 110 + 0.1 \times 210 = 99 + 21 = 120 \, \text{ns}$
 
